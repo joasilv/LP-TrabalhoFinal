@@ -1,4 +1,4 @@
 # LP-TrabalhoFinal
 João Silva 150118001
-O programa consiste num jogo de adivinhar o animal, em que o user pensa num animal responde a uma serie de perguntas de sim e não e vai sendo redirecionado através dos nos da arvore binaria ate o programa acertar a resposta.
-À medida que o jogo é jogado a arvore vai crescendo, armazenando as informações colocadas pelo user de modo a que seja possivel em próximos jogos existir respostas para o animal que o user pensa.
+
+o programa joga um jogo de adivinha no qual o user tem de responder a uma serie de perguntas de sim /não sobre o animal desconhecido. Eventualmente o programa faz um palpite sobre o que é o animal, se a resposta do programa for errada, o user é solicitado a fornecer uma pergunta sim-não que possa distinguir entre o palpite e a resposta correta, e essas informações são adicionadas à base de conhecimento do programa.
