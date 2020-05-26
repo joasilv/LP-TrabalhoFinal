@@ -171,14 +171,53 @@ public class BTNode<E> {
         }
 
         /**
+         * @return
          * 
          * 
          */
 
-         public setLeft(BTNode<E> newLeft){
+        public void setLeft(BTNode<E> newLeft) {
              left = newLeft;
          }
-         public setRight(BTNode<E> newRight){
+
+         /**
+          * 
+          * @param newRight
+          * @return
+          */
+         public void setRight(BTNode<E> newRight) {
              right= newRight;
          }
+
+         /**
+          * 
+
+          */
+
+          public static <E> BTNode<E> treeCopy(BTNode<E> source){
+              BTNode<E> leftCopy, rightCopy;
+
+              if(source == null){
+                  return null;
+              }
+              else{
+                  leftCopy=treeCopy(source.left);
+                  rightCopy = treeCopy(source.right);
+                  return new BTNode<E>(source.data, leftCopy, rightCopy);
+              }
+          }
+
+          /**
+           * 
+           */
+
+           public static <E> long treeSize(BTNode<E> root){
+               if(root==null){
+                   return 0;
+               }
+               else{
+                   return 1+ treeSize(root.left) + treeSize(root.right);
+               }
+           }
+
 }
