@@ -131,9 +131,14 @@ public class BinaryTree {
 	}
 	
 	//Data Members
-	private Node root; 
-    // Ponto de partida da árvore binária
-	private Node current; 
-    //Posição atual
+	private Node root; // Ponto de partida da árvore binária
+    private Node current; //Posição atual
+
+    public BinaryTree(Node root, Node current) {
+        this.root = root;
+        this.current = current;
+    }
+    
+    
 
 }
