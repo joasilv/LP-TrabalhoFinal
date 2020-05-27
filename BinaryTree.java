@@ -133,10 +133,29 @@ public class BinaryTree {
 	//Data Members
 	private Node root; // Ponto de partida da árvore binária
     private Node current; //Posição atual
+	public Object getCurrent;
 
     public BinaryTree(Node root, Node current) {
         this.root = root;
         this.current = current;
+    }
+
+    //getters
+
+    public Node getCurrent(){
+        return current;
+    }
+
+    public Node getRoot(){
+        return root;
+    }
+
+    //setters
+    public void setRoot(Node newRoot){
+        this.root=newRoot;
+    }
+    public void setCurrent( Node newCurrent){
+        this.current=newCurrent;
     }
     
     

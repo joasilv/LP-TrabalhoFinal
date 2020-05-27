@@ -31,8 +31,8 @@ public class bot {
         else if(GuessTree.isAtEnd()){
             /*está no nó final*/
             //System.out.println("FIM");
-            animal= GuessTree.current.data;
-            pergunta= "É " + UmouUma (animal)+ " "+ animal+"?";
+            animal= GuessTree.getCurrent().data;
+            pergunta= "É " + animal+"?";
             // DoWhile loop para verificar o caractere digitado e permitir que o usuário digite novamente argumentos válidos
             do{
                 System.out.println(pergunta);
@@ -53,7 +53,7 @@ public class bot {
         else{
             /*FAZ PERGUNTA*/
             //System.out.println("PERGUNTANDO");
-            pergunta = GuessTree.current.data;// nó pergunta
+            pergunta = GuessTree.getCurrent().data;// nó pergunta
             // DoWhile loop para verificar o caractere digitado e permitir que o usuário digite novamente argumentos válidos
             do{
                 System.out.println(pergunta);
@@ -64,7 +64,7 @@ public class bot {
 
                 }
                 else if(SouN=='N'){
-                    if(GuessTree.current.left==null){
+                    if(GuessTree.getCurrent().left==null){
                         giveup();
                     }
                     else{
@@ -91,7 +91,7 @@ public class bot {
         String novaPergunta; //nova pergunta
         System.out.println("Desisto. Qual é?");
         animal= ler.nextLine();
-        pergunta= "Qual a pergunta que me diz que animal é " + UmouUma(animal)+ " " + animal + "?";
+        pergunta= "Qual a pergunta que me diz que animal é "+ animal + "?";
         System.out.println(pergunta);
         novaPergunta = ler.nextLine();
         /*Se a árvore binária está vazia*/
@@ -103,46 +103,36 @@ public class bot {
             GuessTree.setCurrentToStart();
         }
         /*SE O PONTEIRO ATUAL ESTIVER NO INÍCIO E O UTILIZADOR INSERIR NÃO NA PRIMEIRA PERGUNTA */
-        else if(GuessTree.current.data==GuessTree.root.data){
+        else if(GuessTree.getCurrent().data==GuessTree.getRoot().data){
             //move nova pergunta para a esquerda
             GuessTree.Insert(novaPergunta, "N");
             GuessTree.moveCurrentNao();
             // define o ponteiro atual para o novo nó da pergunta
-            GuessTree.current.right=new Node(animal);
+            GuessTree.getCurrent().right=new Node(animal);
             GuessTree.setCurrentToStart();
 
         }
         else{
             /* SE O NÓS É UMA PERGUNTA */
-            if(GuessTree.current.data.contains("?")){
+            if(GuessTree.getCurrent().data.contains("?")){
                 //CRIA NOVO NÓ ESQUERDO
-                GuessTree.current.left=new Node(novaPergunta);
+                GuessTree.getCurrent().left=new Node(novaPergunta);
                 //CRIA NOVO NÓ left.right
-                GuessTree.current.left.right= new Node(animal);
+                GuessTree.getCurrent().left.right= new Node(animal);
                 GuessTree.setCurrentToStart();
             }
             /*SE O ANIMAL ESTIVER ERRRADO*/
             else{
                 //oldAnimal é o animal escolhido pelo bot
-                oldAnimal=GuessTree.current.data;
+                oldAnimal=GuessTree.getCurrent().data;
                 //nova pergunta substitui o nó de oldAnimal
-                GuessTree.current.data=novaPergunta;
+                GuessTree.getCurrent().data=novaPergunta;
                 //oldAnimal é empurrado para a esquerda
-                GuessTree.current.left= new Node(oldAnimal);
+                GuessTree.getCurrent().left= new Node(oldAnimal);
                 //o novo animal correto é colocado à direita
-                GuessTree.current.right=new Node(animal);
+                GuessTree.getCurrent().right=new Node(animal);
                 GuessTree.setCurrentToStart();
             }
         }
     }
-
-    
-/**
-* Este método coloca a estrutura gramatical correta à frente de uma sequência de animais.
-* @param animal O animal que precisa ser analisado
-* @return aOran an se a primeira letra do animal começar com uma vogal, a para qualquer outra coisa
-*/
-String UmouUma(String animal){
-    
-}
 }
