@@ -31,7 +31,7 @@ public class bot {
         else if(GuessTree.isAtEnd()){
             /*está no nó final*/
             //System.out.println("FIM");
-            animal= GuessTree.getCurrent().data;
+            animal= GuessTree.getCurrent().getData();
             pergunta= "É " + animal+"?";
             // DoWhile loop para verificar o caractere digitado e permitir que o usuário digite novamente argumentos válidos
             do{
@@ -53,7 +53,7 @@ public class bot {
         else{
             /*FAZ PERGUNTA*/
             //System.out.println("PERGUNTANDO");
-            pergunta = GuessTree.getCurrent().data;// nó pergunta
+            pergunta = GuessTree.getCurrent().getData();// nó pergunta
             // DoWhile loop para verificar o caractere digitado e permitir que o usuário digite novamente argumentos válidos
             do{
                 System.out.println(pergunta);
@@ -64,7 +64,7 @@ public class bot {
 
                 }
                 else if(SouN=='N'){
-                    if(GuessTree.getCurrent().left==null){
+                    if(GuessTree.getCurrent().getLeft()==null){
                         giveup();
                     }
                     else{
@@ -103,34 +103,34 @@ public class bot {
             GuessTree.setCurrentToStart();
         }
         /*SE O PONTEIRO ATUAL ESTIVER NO INÍCIO E O UTILIZADOR INSERIR NÃO NA PRIMEIRA PERGUNTA */
-        else if(GuessTree.getCurrent().data==GuessTree.getRoot().data){
+        else if(GuessTree.getCurrent().getData()==GuessTree.getRoot().getData()){
             //move nova pergunta para a esquerda
             GuessTree.Insert(novaPergunta, "N");
             GuessTree.moveCurrentNao();
             // define o ponteiro atual para o novo nó da pergunta
-            GuessTree.getCurrent().right=new Node(animal);
+            GuessTree.getCurrent().setRight(new Node(animal));
             GuessTree.setCurrentToStart();
 
         }
         else{
             /* SE O NÓS É UMA PERGUNTA */
-            if(GuessTree.getCurrent().data.contains("?")){
+            if(GuessTree.getCurrent().getData().contains("?")){
                 //CRIA NOVO NÓ ESQUERDO
-                GuessTree.getCurrent().left=new Node(novaPergunta);
+                GuessTree.getCurrent().setLeft(new Node(novaPergunta));
                 //CRIA NOVO NÓ left.right
-                GuessTree.getCurrent().left.right= new Node(animal);
+                GuessTree.getCurrent().getLeft().setRight(new Node(animal));
                 GuessTree.setCurrentToStart();
             }
             /*SE O ANIMAL ESTIVER ERRRADO*/
             else{
                 //oldAnimal é o animal escolhido pelo bot
-                oldAnimal=GuessTree.getCurrent().data;
+                oldAnimal=GuessTree.getCurrent().getData();
                 //nova pergunta substitui o nó de oldAnimal
-                GuessTree.getCurrent().data=novaPergunta;
+                GuessTree.getCurrent().setData(novaPergunta);
                 //oldAnimal é empurrado para a esquerda
-                GuessTree.getCurrent().left= new Node(oldAnimal);
+                GuessTree.getCurrent().setLeft(new Node(oldAnimal));
                 //o novo animal correto é colocado à direita
-                GuessTree.getCurrent().right=new Node(animal);
+                GuessTree.getCurrent().setRight(new Node(animal));
                 GuessTree.setCurrentToStart();
             }
         }

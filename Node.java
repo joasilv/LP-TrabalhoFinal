@@ -23,9 +23,30 @@ Esta classe cria um Nó que contém uma String e os nós esquerdo e direito.
 		
 	}
 	
-	public Node left;
-	public Node right;
-	public String data;
+	private Node left;
+	private Node right;
+	private String data;
 	
-	
+	public String getData(){
+        return data;
+    }
+
+    public Node getLeft(){
+        return left;
+    }
+
+    public Node getRight(){
+        return right;
+    }
+
+    public void setData( String newData){
+        this.data= newData;
+    }
+
+    public void setLeft( Node newLeft){
+        this.left=newLeft;
+    }
+    public void setRight( Node newRight){
+        this.right = newRight;
+    }
 }

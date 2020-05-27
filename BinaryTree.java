@@ -51,7 +51,7 @@ public class BinaryTree {
 * @return trueOrfalse True se a corrente precisar de nós para viajar para
 */
 	boolean isAtEnd(){
-		if ((current!= null) && (current.left == null && current.right == null)){
+		if ((current!= null) && (current.getLeft() == null && current.getRight() == null)){
 			return true;
 		}
 		else{
@@ -63,7 +63,7 @@ public class BinaryTree {
 * @return current.data A cadeia localizada no nó atual.
 */
 	String getCurrentData(){
-		return current.data;
+		return current.getData();
 		
 	}
 	
@@ -72,7 +72,7 @@ public class BinaryTree {
 * Move o ponteiro atual para o seguinte nó direito, sinalizando um SIM
 */
 	void moveCurrentSim(){
-		current = current.right;
+		current = current.getRight();
 	}
 	
 	
@@ -80,7 +80,7 @@ public class BinaryTree {
 * Move o ponteiro atual para o seguinte nó esquerdo, sinalizando um NÃO
 */
 	void moveCurrentNao(){
-		current = current.left;
+		current = current.getLeft();
 	}
 	/**
 * Move a corrente para a raiz, o ponto de partida.
@@ -108,11 +108,11 @@ public class BinaryTree {
 		}
         else if (move == "S"){
        // 	System.out.println("SIM INSERIDO");
-			newRoot.right = InsertItem(newRoot.right, value, move);
+			newRoot.setRight(InsertItem(newRoot.getRight(), value, move));
 		}
 		else{ 
 		//	System.out.println("NÃO INSERIDO");
-			newRoot.left = InsertItem(newRoot.left, value, move);
+			newRoot.setLeft(InsertItem(newRoot.getLeft(), value, move));
 		}
 		return newRoot;
 	}
@@ -124,9 +124,9 @@ public class BinaryTree {
 */
 	private void PrintTree(Node root){
 		if (root != null){
-			System.out.println(root.data);
-			PrintTree(root.left);
-			PrintTree(root.right);
+			System.out.println(root.getData());
+			PrintTree(root.getLeft());
+			PrintTree(root.getRight());
 		}
 	}
 	
